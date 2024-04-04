@@ -1,5 +1,6 @@
 ﻿using FinanceTrackerApi.Persistence;
 using FinanceTrackerApi.Services.CategoryService;
+using FinanceTrackerApi.Services.TransactionService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddDbContext<FinanceAppDbContext>();
 
 var app = builder.Build();
