@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+
 namespace FinanceTrackerApi.Models
 {
 	public class Transaction

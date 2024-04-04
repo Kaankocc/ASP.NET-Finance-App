@@ -1,47 +1,68 @@
 ﻿using System;
 using FinanceTrackerApi.Models;
+using FinanceTrackerApi.Persistence;
 
 namespace FinanceTrackerApi.Services.CategoryService
 {
 	public class CategoryService : ICategoryService
 	{
-        private static List<Category> categories = new List<Category>
-        {
-            new Category{ Id = 1, Title = "Test1"},
-            new Category{ Id = 2, Title = "Test2"},
-            new Category{ Id = 3, Title = "Test3"}
-        };
+      
+        private readonly FinanceAppDbContext _context;
 
-        public List<Category> AddCategory(Category category)
+        public CategoryService(FinanceAppDbContext context)
         {
-            categories.Add(category);
+            _context = context;
+        }
+
+        public async Task<List<Category>> GetAllCategories()
+        {
+            var categories = await _context.Categories.ToListAsync();
             return categories;
         }
 
-        public List<Category> DeleteCategory(int id)
+        public async Task<Category?> GetSingleCategory(int id)
         {
-            var category = categories.Find(x => x.Id == id);
-            categories.Remove(category);
-            return categories;
-        }
+            var category = await _context.Categories.FindAsync(id);
+            if (category is null)
+                return null;
 
-        public List<Category> GetAllCategories()
-        {
-            return categories;
-        }
-
-        public Category GetSingleCategory(int id)
-        {
-            var category = categories.Find(x => x.Id == id);
             return category;
         }
 
-        public List<Category> UpdateCategory(int id, Category request)
-        {
-            var category = categories.Find(x => x.Id == id);
-            category.Title = request.Title;
 
-            return categories;
+        public async Task<Category> AddCategory(Category category)
+        {
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+
+            return category;
+        }
+
+        public async Task<Category?> UpdateCategory(int id, Category request)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category is null)
+                return null;
+
+            category.Icon = request.Icon;
+            category.Title = request.Title;
+            category.Type = request.Type;
+
+            await _context.SaveChangesAsync();
+
+            return category;
+        }
+
+        public async Task<Category?> DeleteCategory(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category is null)
+                return null;
+
+            _context.Remove(category);
+            await _context.SaveChangesAsync();
+
+            return category;
         }
     }
 }

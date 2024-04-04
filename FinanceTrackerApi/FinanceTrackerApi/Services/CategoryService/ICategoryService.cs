@@ -5,15 +5,15 @@ namespace FinanceTrackerApi.Services.CategoryService
 {
 	public interface ICategoryService
 	{
-        List<Category> GetAllCategories();
+        Task<List<Category>> GetAllCategories();
 
-        Category GetSingleCategory(int id);
+        Task<Category?> GetSingleCategory(int id);
 
-        List<Category> AddCategory(Category category);
+        Task<Category> AddCategory(Category category);
 
-        List<Category> UpdateCategory(int id, Category category);
+        Task<Category?> UpdateCategory(int id, Category category);
 
-        List<Category> DeleteCategory(int id);
+        Task<Category?> DeleteCategory(int id);
 
     }
 }

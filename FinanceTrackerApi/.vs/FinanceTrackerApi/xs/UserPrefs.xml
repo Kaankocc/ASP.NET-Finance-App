@@ -1,4 +1,31 @@
 ﻿<Properties StartupConfiguration="{89E4C144-CF0A-41DA-9126-CD77805B3365}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinanceTrackerApi/Program.cs">
+    <Files>
+      <File FileName="FinanceTrackerApi/Services/CategoryService/CategoryService.cs" Line="44" Column="28" />
+      <File FileName="FinanceTrackerApi/Controllers/CategoryController.cs" Line="57" Column="27" />
+      <File FileName="FinanceTrackerApi/Program.cs" Line="13" Column="21" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FinanceTrackerApi" selected="True">
+            <Node name="FinanceTrackerApi">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="CategoryService" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

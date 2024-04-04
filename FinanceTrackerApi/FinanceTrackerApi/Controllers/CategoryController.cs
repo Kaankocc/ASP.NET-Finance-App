@@ -22,41 +22,40 @@ namespace FinanceTrackerApi.Controllers
 
         // GET: api/values
         [HttpGet]
-        public async Task<IActionResult> GetAllCategories()
+        public async Task<ActionResult<List<Category>>> GetAllCategories()
         {
-            var categories = _categoryService.GetAllCategories();
-            return Ok(categories);
+            return await _categoryService.GetAllCategories();
         }
 
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSingleCategory(int id)
+        public async Task<ActionResult<Category>> GetSingleCategory(int id)
         {
-            var category = _categoryService.GetSingleCategory(id);
+            var category =  await _categoryService.GetSingleCategory(id);
             if(category is null)
             {
-                return NotFound("Sorry, but this hero doesn't exitt");
+                return NotFound("Sorry, but this category doesn't exitt");
             }
             return Ok(category);
         }
 
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> AddCategory([FromBody]Category category)
+        public async Task<ActionResult<Category>> AddCategory([FromBody]Category request)
         {
-            var categories = _categoryService.AddCategory(category);
-            return Ok(categories);
+            var category = await _categoryService.AddCategory(request);
+            return Ok(category);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, [FromBody] Category request)
+        public async Task<ActionResult<Category>> UpdateCategory(int id, [FromBody] Category request)
         {
-            var categories = _categoryService.UpdateCategory(id, request);
+            var categories = await _categoryService.UpdateCategory(id, request);
             if (categories is null)
             {
-                return NotFound("Sorry, but this hero doesn't exitt");
+                return NotFound("Sorry, but this category doesn't exitt");
             }
 
             return Ok(categories);
@@ -64,9 +63,9 @@ namespace FinanceTrackerApi.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<ActionResult<Category>> DeleteCategory(int id)
         {
-            var result = _categoryService.DeleteCategory(id);
+            var result = await _categoryService.DeleteCategory(id);
             if (result is null)
                 return NotFound("Not found");
 
