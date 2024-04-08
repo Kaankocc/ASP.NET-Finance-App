@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
     <section class="section">
@@ -55,7 +55,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let t of service.list">
+                      <tr *ngFor="let t of transactionService.list">
                         <td>{{t.id}}</td>
                         <td>{{t.amount}}$</td>
                         <td>{{t.category?.title}}</td>
@@ -65,35 +65,92 @@
                     </tbody>
                 </table>
                 
-                <!-- component.html -->
+                <!-- Modal Component -->
                 <div class="modal" [ngClass]="{'is-active': modalActive}">
-                  <div class="modal-background" (click)="toggleModal()"></div>
+                  <div class="modal-background" (click)="CloseModal()"></div>
                   <div class="modal-card">
                     <header class="modal-card-head">
-                      <p class="modal-card-title">Modal title</p>
-                      <button class="delete" aria-label="close" (click)="toggleModal()" ></button>
+                      <p class="modal-card-title">Enter Expense</p>
+                      <button class="delete" aria-label="close" (click)="CloseModal()" ></button>
                     </header>
+
+                    
                     <section class="modal-card-body">
-                      <!-- Content ... -->
-                      <p>hello</p>
+                      <!-- Transaction Form ... -->
+                                          
+                
+
+                      <div class="field">
+                        <label class="label">Category</label>
+                        <div class="control">
+                          <div class="select is-rounded">
+                            <select [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}">
+                              <option value="">Select Category</option>
+                              <option *ngFor="let c of categoryService.list" [value]="c.id">{{c.title}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Amount Input-->
+                      <label class="label">Amount</label>
+                      <div class="field has-addons">
+                        <p class="control">
+                          <span class="select">
+                            <select>
+                              <option>$</option>
+                              <option>£</option>
+                              <option>€</option>
+                            </select>
+                          </span>
+                        </p>
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Amount of money" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}">
+                          
+                        </p>
+                      </div>
+
+
+                      <!-- Note Input Area -->
+
+                      <div class="field">
+                        <label class="label">Note</label>
+                        <div class="control">
+                          <textarea class="textarea" placeholder="type here..." [(ngModel)]="note" [ngModelOptions]="{standalone: true}"></textarea>
+                        </div>
+                      </div>
+                      
+                      <label class="label">Date</label>
+                      <div class="control">
+                        <input [(ngModel)]="date" [ngModelOptions]="{standalone: true}" type="date">
+
+                      </div>
+                      <!-- Submit Button -->
+                
+
+                    
                     </section>
                     <footer class="modal-card-foot">
                       <div class="buttons">
                         <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button" (click)="cancelButton()" >Cancel</button>
                       </div>
                     </footer>
+                    
+                  
                   </div>
                 </div>
+
+                
                   
-                  <button class="button is-pulled-right" (click)="toggleModal()">Log Expense</button>
+                  <button class="button is-pulled-right" (click)="OpenModal()">Enter Expense</button>
                 
               </div>
 
             </div>
             <div class="column is-half">
               <!-- Right side graph goes here -->
-              <div class="column has-background-primary">
+              <div class="column">
                
               </div>
             </div>
