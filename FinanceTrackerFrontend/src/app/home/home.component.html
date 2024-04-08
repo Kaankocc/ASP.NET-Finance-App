@@ -33,13 +33,13 @@
                   <div class="level-item has-text-centered">
                     <div>
                       <p class="heading">Total Expenses</p>
-                      <p class="title" >3,456</p>
+                      <p class="title" >3456$</p>
                     </div>
                   </div>
                   <div class="level-item has-text-centered">
                     <div>
                       <p class="heading">Total Income</p>
-                      <p class="title">123</p>
+                      <p class="title">6000$</p>
                     </div>
                   </div>
                 </nav>
@@ -67,14 +67,25 @@
                 <!-- component.html -->
                 <div class="modal" [ngClass]="{'is-active': modalActive}">
                   <div class="modal-background" (click)="toggleModal()"></div>
-                  <div class="modal-content py-5 px-5">
-                    <h3 class="title mb-6">This is a modal page</h3>
+                  <div class="modal-card">
+                    <header class="modal-card-head">
+                      <p class="modal-card-title">Modal title</p>
+                      <button class="delete" aria-label="close" (click)="toggleModal()" ></button>
+                    </header>
+                    <section class="modal-card-body">
+                      <!-- Content ... -->
+                      <p>hello</p>
+                    </section>
+                    <footer class="modal-card-foot">
+                      <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                      </div>
+                    </footer>
                   </div>
-                  <button class="modal-close is-large" aria-label="close" (click)="toggleModal()"></button>
                 </div>
-
-                <button class="button is-primary" (click)="toggleModal()">Open Modal</button>
-
+                  
+                  <button class="button is-pulled-right" (click)="toggleModal()">Log Expense</button>
                 
               </div>
 

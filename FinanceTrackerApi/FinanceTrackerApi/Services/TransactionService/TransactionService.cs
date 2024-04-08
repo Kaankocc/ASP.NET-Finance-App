@@ -17,13 +17,13 @@ namespace FinanceTrackerApi.Services.TransactionService
 
         public async Task<List<Transaction>> GetAllTransactions()
         {
-            var transactions = await _context.Transactions.ToListAsync();
+            var transactions = await _context.Transactions.Include(t => t.Category).ToListAsync();
             return transactions;
         }
 
         public async Task<Transaction?> GetSingleTransaction(int id)
         {
-            var transaction = await _context.Transactions.FindAsync(id);
+            var transaction = await _context.Transactions.Include(t => t.Category).FirstOrDefaultAsync(t => t.Id == id);
             if (transaction is null)
                 return null;
 
