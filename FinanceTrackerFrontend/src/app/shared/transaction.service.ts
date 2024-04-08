@@ -11,6 +11,7 @@ export class TransactionService {
 
   url: string = environment.apiBaseUrl + "/Transaction"
   list:Transaction[] = [];
+  formData : Transaction = new Transaction();
   constructor(private http: HttpClient) { }
   
 
@@ -23,5 +24,15 @@ export class TransactionService {
       error: err => {console.log(err)}
     });
 
+  }
+
+  PostTransaction() {
+   return this.http.post(this.url, this.formData)
+   .subscribe({
+    next: res => {
+      console.log(res)
+    },
+    error: err => { console.log(err) }
+   }) 
   }
 }

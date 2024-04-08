@@ -34,7 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log("submitted");
+    this.transactionService.formData.amount = this.amount;
+    this.transactionService.formData.categoryId = +this.selectedCategory;
+    this.transactionService.formData.date = new Date(this.date);
+    this.transactionService.formData.note = this.note;
+
+    this.transactionService.PostTransaction();
   }
 
   cancelButton() {
@@ -52,10 +57,6 @@ export class HomeComponent implements OnInit {
 
   CloseModal() {
     this.modalActive = false;
-    console.log(this.selectedCategory);
-    console.log(this.amount);
-    console.log(this.note);
-    console.log(this.date);
     
   }
 }

@@ -55,8 +55,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let t of transactionService.list">
-                        <td>{{t.id}}</td>
+                      <tr *ngFor="let t of transactionService.list; let i=index">
+                        <td>{{i + 1}}</td>
                         <td>{{t.amount}}$</td>
                         <td>{{t.category?.title}}</td>
                         <td>{{t.date}}</td>
@@ -132,7 +132,7 @@
                     </section>
                     <footer class="modal-card-foot">
                       <div class="buttons">
-                        <button class="button is-success">Save changes</button>
+                        <button class="button is-success" (click)="submitForm()">Submit</button>
                         <button class="button" (click)="cancelButton()" >Cancel</button>
                       </div>
                     </footer>
