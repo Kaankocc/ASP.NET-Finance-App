@@ -48,7 +48,7 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Amount</th>
+                        <th>Amount ($)</th>
                         <th>Category</th>
                         <th>Date</th>
                         <th>Note</th>
@@ -63,6 +63,18 @@
 
                     </tbody>
                 </table>
+                
+                <!-- component.html -->
+                <div class="modal" [ngClass]="{'is-active': modalActive}">
+                  <div class="modal-background" (click)="toggleModal()"></div>
+                  <div class="modal-content py-5 px-5">
+                    <h3 class="title mb-6">This is a modal page</h3>
+                  </div>
+                  <button class="modal-close is-large" aria-label="close" (click)="toggleModal()"></button>
+                </div>
+
+                <button class="button is-primary" (click)="toggleModal()">Open Modal</button>
+
                 
               </div>
 
