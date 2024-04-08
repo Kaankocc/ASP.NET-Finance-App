@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionService } from '../shared/transaction.service';
+import { transition } from '@angular/animations';
+import { Transaction } from '../shared/transaction.model';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,6 @@ import { TransactionService } from '../shared/transaction.service';
   providers: [TransactionService]
 })
 export class HomeComponent implements OnInit {
-  
   constructor(public service: TransactionService) {
 
   }
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.GetListOfTransactions();
+
   }
 
   toggleModal() {

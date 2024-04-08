@@ -1,19 +1,34 @@
 ﻿<Properties StartupConfiguration="{89E4C144-CF0A-41DA-9126-CD77805B3365}|https">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FinanceTrackerApi/Controllers/CategoryController.cs">
-    <Files>
-      <File FileName="FinanceTrackerApi/Controllers/CategoryController.cs" Line="1" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__" />
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinanceTrackerApi/Services/TransactionService/TransactionService.cs">
+    <Files>
+      <File FileName="FinanceTrackerApi/Controllers/CategoryController.cs" Line="20" Column="32" />
+      <File FileName="FinanceTrackerApi/Program.cs" Line="27" Column="50" />
+      <File FileName="FinanceTrackerApi/Models/Category.cs" Line="16" Column="1" />
+      <File FileName="FinanceTrackerApi/Models/Transaction.cs" Line="16" Column="18" />
+      <File FileName="FinanceTrackerApi/Controllers/TrancationController.cs" Line="17" Column="10" />
+      <File FileName="FinanceTrackerApi/Services/TransactionService/TransactionService.cs" Line="26" Column="121" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FinanceTrackerApi">
+            <Node name="FinanceTrackerApi" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="TransactionService" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

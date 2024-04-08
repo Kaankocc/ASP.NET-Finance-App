@@ -1,6 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
+import { Transaction } from './transaction.model';
+import { transition } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { environment } from '../../environments/environment.development';
 export class TransactionService {
 
   url: string = environment.apiBaseUrl + "/Transaction"
+  list:Transaction[] = [];
   constructor(private http: HttpClient) { }
   
 
@@ -15,9 +18,10 @@ export class TransactionService {
     this.http.get(this.url)
     .subscribe({
       next: res=>{
-        console.log(res);
+        this.list = res as Transaction[];
       },
       error: err => {console.log(err)}
-    })
+    });
+
   }
 }

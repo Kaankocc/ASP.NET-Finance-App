@@ -55,12 +55,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <td>1</td>
-                        <td>435$</td>
-                        <td>Food</td>
-                        <td>23/03/2034</td>
-                        <td>Note</td>
-
+                      <tr *ngFor="let t of service.list">
+                        <td>{{t.id}}</td>
+                        <td>{{t.amount}}$</td>
+                        <td>{{t.category?.title}}</td>
+                        <td>{{t.date}}</td>
+                        <td>{{t.note}}</td>
+                      </tr>
                     </tbody>
                 </table>
                 
