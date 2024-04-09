@@ -37,6 +37,26 @@ namespace FinanceTrackerApi.Controllers
             return Ok(transaction);
         }
 
+        // GET: api/transaction/year-month
+        [HttpGet("{year}-{month}")]
+        public async Task<ActionResult<List<Transaction>>> GetTransactionsByYearMonth(int year, int month)
+        {
+            // Validate input year and month
+            if (year < 1 || month < 1 || month > 12)
+            {
+                return BadRequest("Invalid year or month.");
+            }
+
+            // Get transactions for the specified year and month
+            var transactions = await _transactionService.GetTransactionsByYearMonth(year, month);
+            if (transactions.Count == 0)
+            {
+                return NotFound("No transactions found for the specified year and month.");
+            }
+
+            return Ok(transactions);
+        }
+
         // POST api/transaction
         [HttpPost]
         public async Task<ActionResult<Transaction>> AddTransaction([FromBody] Transaction request)

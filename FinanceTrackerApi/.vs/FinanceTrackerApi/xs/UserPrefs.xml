@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{89E4C144-CF0A-41DA-9126-CD77805B3365}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="FinanceTrackerApi/Services/TransactionService/TransactionService.cs">
     <Files>
       <File FileName="FinanceTrackerApi/Controllers/CategoryController.cs" />
       <File FileName="FinanceTrackerApi/Program.cs" />
       <File FileName="FinanceTrackerApi/Models/Category.cs" />
-      <File FileName="FinanceTrackerApi/Models/Transaction.cs" />
-      <File FileName="FinanceTrackerApi/Controllers/TrancationController.cs" />
-      <File FileName="FinanceTrackerApi/Services/TransactionService/TransactionService.cs" Line="26" Column="121" />
+      <File FileName="FinanceTrackerApi/Models/Transaction.cs" Line="19" Column="1" />
+      <File FileName="FinanceTrackerApi/Controllers/TrancationController.cs" Line="47" Column="51" />
+      <File FileName="FinanceTrackerApi/Services/TransactionService/TransactionService.cs" Line="60" Column="45" />
+      <File FileName="FinanceTrackerApi/Services/TransactionService/ITransactionService.cs" Line="20" Column="81" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,6 +23,7 @@
             <Node name="FinanceTrackerApi" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Persistence" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="TransactionService" expanded="True" />
               </Node>

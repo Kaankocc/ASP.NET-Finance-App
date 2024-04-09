@@ -30,6 +30,17 @@ namespace FinanceTrackerApi.Services.TransactionService
             return transaction;
         }
 
+        public async Task<List<Transaction>> GetTransactionsByYearMonth(int year, int month)
+        {
+            // Filter transactions by year and month
+            var transactions = await _context.Transactions
+                .Include(t => t.Category)
+                .Where(t => t.Date.Year == year && t.Date.Month == month)
+                .ToListAsync();
+
+            return transactions;
+        }
+
         public async Task<Transaction> AddTransaction(Transaction transaction)
         {
             _context.Transactions.Add(transaction);

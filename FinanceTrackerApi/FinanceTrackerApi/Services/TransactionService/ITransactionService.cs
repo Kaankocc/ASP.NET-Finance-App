@@ -16,5 +16,7 @@ namespace FinanceTrackerApi.Services.TransactionService
         Task<Transaction?> UpdateTransaction(int id, Transaction transaction);
 
         Task<Transaction?> DeleteTransaction(int id);
+
+        Task<List<Transaction>> GetTransactionsByYearMonth(int year, int month);
     }
 }

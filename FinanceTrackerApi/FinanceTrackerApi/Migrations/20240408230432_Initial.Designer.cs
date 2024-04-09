@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinanceTrackerApi.Migrations
 {
     [DbContext(typeof(FinanceAppDbContext))]
-    [Migration("20240404191803_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240408230432_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -33,7 +33,7 @@
                   <div class="level-item has-text-centered">
                     <div>
                       <p class="heading">Total Expenses</p>
-                      <p class="title" >3456$</p>
+                      <p class="title">{{this.transactionService.totalAmount}}$</p>
                     </div>
                   </div>
                   <div class="level-item has-text-centered">
@@ -59,7 +59,7 @@
                         <td>{{i + 1}}</td>
                         <td>{{t.amount}}$</td>
                         <td>{{t.category?.title}}</td>
-                        <td>{{t.date}}</td>
+                        <td>{{convertToFormattedString(t.date)}}</td>
                         <td>{{t.note}}</td>
                       </tr>
                     </tbody>

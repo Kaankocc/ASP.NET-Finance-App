@@ -7,4 +7,9 @@ export class Transaction {
     amount: number = 0;
     note: string = "";
     date: Date | undefined;
+    date_string: string | undefined;
+
+
+
+   
 }
