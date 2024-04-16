@@ -1,25 +1,33 @@
 *,
 *:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-input[type="date"]{
-    background-color: #7678ed;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    font-family: "Roboto Mono",monospace;
-    color: #ffffff;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
+input[type="date"] {
+  background-color: #7678ed;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  font-family: "Roboto Mono", monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }
-::-webkit-calendar-picker-indicator{
-    background-color: #ffffff;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 3px;
+::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.income {
+  color: #7ae582;
+}
+
+.expense {
+  color: #ff595e;
 }
