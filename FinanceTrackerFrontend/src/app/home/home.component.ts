@@ -52,15 +52,18 @@ export class HomeComponent implements OnInit {
     this.transactionService.formData.date = this.parseDateString(this.date);
     this.transactionService.formData.note = this.note;
 
-    this.transactionService.PostTransaction().subscribe(() => {
+    this.transactionService.PostTransaction().subscribe({
+    next: () => {
       // Close the modal after successful post
       this.CloseTransactionModel();
       // Reload the page to refresh the list
       location.reload();
-    }, error => {
+    },
+    error: (error) => {
       // Handle errors if necessary
       console.error('Error posting transaction:', error);
-    });
+    }
+  });
     
   }
 
@@ -75,10 +78,24 @@ export class HomeComponent implements OnInit {
       // Close the modal after successful post
       this.CloseCategoryModel();
       // Reload the page to refresh the list
-      location.reload();
+      this.showCategories();
     }, error => {
       // Handle errors if necessary
       console.error('Error posting Category:', error);
+    });
+  }
+
+  deleteCategory(id: number): void {
+    this.categoryService.DeleteCategory(id).subscribe({
+      next: () => {
+        // Reload the page to refresh the list
+        this.showingCategories = true;
+        this.showCategories();
+      },
+      error: (error) => {
+        // Handle errors if necessary
+        console.error('Error deleting category:', error);
+      }
     });
   }
 

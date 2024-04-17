@@ -85,6 +85,7 @@
                     <th>Title</th>
                     <th>Icon</th>
                     <th>Type</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -93,6 +94,21 @@
                     <td>{{c.title}}</td>
                     <td>{{c.icon}}</td>
                     <td>{{c.type}}</td>
+                    <td>
+                      <p class="buttons">
+                        <button class="button is-small is-danger" (click)="deleteCategory(c.id)">
+                          <span class="icon is-small has-text-danger">
+                            <img src="/assets/cross.png">
+                          </span>
+                        </button>
+                        <button class="button is-small is-info">
+                          <span class="icon is-small">
+                            <img src="/assets/edit.png">
+                          </span>
+                        </button>
+                      </p>
+
+                    </td>
                   </tr>
                 </tbody>
               </table>
