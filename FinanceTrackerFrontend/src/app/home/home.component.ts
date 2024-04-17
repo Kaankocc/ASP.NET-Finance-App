@@ -28,6 +28,10 @@ export class HomeComponent implements OnInit {
   icon: string = "";
   type: string = "";
 
+  // For Editing Category Object
+  currentCategory: Category | undefined;
+
+
 
   showingTransactions: boolean = true;
   showingCategories: boolean = false;
@@ -67,6 +71,19 @@ export class HomeComponent implements OnInit {
     
   }
 
+  editCategory(id: number): void {
+    this.categoryService.GetSingleCategory(id).subscribe({
+      next: res=>{
+        this.currentCategory = res as Category;
+        console.log(res);
+      },
+      error: err => {console.log(err)}
+    });
+
+    
+    
+  }
+
   submitCategoryForm(): void {
     this.categoryService.formData.title = this.title;
     this.categoryService.formData.icon = this.icon;
@@ -74,14 +91,17 @@ export class HomeComponent implements OnInit {
 
     console.log(this.categoryService.formData);
 
-    this.categoryService.PostCategory().subscribe(() => {
-      // Close the modal after successful post
-      this.CloseCategoryModel();
-      // Reload the page to refresh the list
-      this.showCategories();
-    }, error => {
-      // Handle errors if necessary
-      console.error('Error posting Category:', error);
+    this.categoryService.PostCategory().subscribe({
+      next: () => {
+        // Close the modal after successful post
+        this.CloseCategoryModel();
+        // Reload the page to refresh the list
+        this.showCategories();
+      },
+      error: (error) => {
+        // Handle errors if necessary
+        console.error('Error posting transaction:', error);
+      }
     });
   }
 
