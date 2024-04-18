@@ -16,7 +16,7 @@ namespace FinanceTrackerApi.Services.CategoryService
 
         public async Task<List<Category>> GetAllCategories()
         {
-            var categories = await _context.Categories.ToListAsync();
+            var categories = await _context.Categories.OrderBy(c => c.Id).ToListAsync();
             return categories;
         }
 

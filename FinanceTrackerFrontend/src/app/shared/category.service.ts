@@ -30,7 +30,15 @@ export class CategoryService {
     return this.http.post(this.url, this.formData);
    }
 
+  PutCategory(id: number):  Observable<any> {
+    return this.http.put(this.url + "/" + id, this.formData);
+   }
+
   DeleteCategory(id: number) {
     return this.http.delete(this.url + "/" + id)
+  }
+
+  GetSingleCategory(id: number) {
+    return this.http.get(this.url + "/" + id)
   }
 }

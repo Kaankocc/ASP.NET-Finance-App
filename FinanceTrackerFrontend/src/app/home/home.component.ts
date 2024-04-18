@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   // For Editing Category Object
   currentCategory: Category | undefined;
-
+  isEditMode: boolean = false; // Flag to track if in edit mode
 
 
   showingTransactions: boolean = true;
@@ -72,19 +72,26 @@ export class HomeComponent implements OnInit {
   }
 
   editCategory(id: number): void {
+    this.isEditMode = true;
     this.categoryService.GetSingleCategory(id).subscribe({
       next: res=>{
         this.currentCategory = res as Category;
+        this.title = this.currentCategory?.title ?? '';
+        this.icon = this.currentCategory?.icon ?? '';
+        this.type = this.currentCategory?.type ?? '';
         console.log(res);
       },
       error: err => {console.log(err)}
     });
 
     
-    
+
+    this.OpenCategoryModal();
+
   }
 
   submitCategoryForm(): void {
+    if(this.isEditMode == false) {
     this.categoryService.formData.title = this.title;
     this.categoryService.formData.icon = this.icon;
     this.categoryService.formData.type = this.type;
@@ -100,9 +107,29 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         // Handle errors if necessary
-        console.error('Error posting transaction:', error);
+        console.error('Error posting category:', error);
       }
     });
+
+    } else {
+      if(this.currentCategory) {
+        this.categoryService.formData.title = this.title;
+        this.categoryService.formData.icon = this.icon;
+        this.categoryService.formData.type = this.type;
+  
+        this.categoryService.PutCategory(this.currentCategory.id).subscribe({
+          next: () => { 
+            this.CloseCategoryModel();
+            this.showCategories();
+          },
+          error: (error) => {
+            console.error("Error updating category:", error);
+          }
+        })
+      }
+      
+    }
+    
   }
 
   deleteCategory(id: number): void {
@@ -154,10 +181,14 @@ export class HomeComponent implements OnInit {
 
 
   CloseCategoryModel() {
+    this.isEditMode = false;
     this.categoryModalActive = false;
+    this.transactionModalActive = false;
+
   }
 
   cancelCategoryButton() {
+    this.isEditMode = false;
     this.title  = ""; 
     this.icon = "";
     this.type = '';

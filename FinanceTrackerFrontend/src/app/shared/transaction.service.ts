@@ -38,7 +38,7 @@ export class TransactionService {
    return this.http.post(this.url, this.formData);
   }
 
-   getTotalAmount(): number {
+  getTotalAmount(): number {
     let totalAmount = 0;
     for (const transaction of this.list) {
       totalAmount += transaction.amount;
