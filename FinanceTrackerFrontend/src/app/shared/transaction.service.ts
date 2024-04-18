@@ -12,7 +12,8 @@ export class TransactionService {
 
   url: string = environment.apiBaseUrl + "/Transaction"
   list:Transaction[] = [];
-  totalAmount: number = 0;
+  totalExpense: number = 0;
+  totalIncome: number = 0;
   formData : Transaction = new Transaction();
   constructor(private http: HttpClient) { }
   
@@ -22,11 +23,20 @@ export class TransactionService {
     .subscribe({
       next: res=>{
         this.list = res as Transaction[];
-        let sum = 0;
+        let sumExpense = 0;
+        let sumIncome = 0;
+
         this.list.forEach(transaction => {
-          sum += transaction.amount;
+          if (transaction.category && transaction.category.type) {
+            if (transaction.category.type === 'Expense') {
+              sumExpense += transaction.amount;
+            } else if (transaction.category.type === 'Income') {
+              sumIncome += transaction.amount;
+            }
+        }
         });
-        this.totalAmount= sum;
+        this.totalExpense = sumExpense;
+        this.totalIncome = sumIncome;
       },
       error: err => {console.log(err)}
     });

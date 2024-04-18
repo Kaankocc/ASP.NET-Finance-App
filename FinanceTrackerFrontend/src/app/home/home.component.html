@@ -38,13 +38,13 @@
                 <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Total Expenses</p>
-                    <p class="title expense">{{this.transactionService.totalAmount}}$</p>
+                    <p class="title expense">{{this.transactionService.totalExpense}}$</p>
                   </div>
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
                     <p class="heading">Total Income</p>
-                    <p class="title income">6000$</p>
+                    <p class="title income">{{this.transactionService.totalIncome}}$</p>
                   </div>
                 </div>
               </nav>
@@ -118,7 +118,7 @@
                 <div class="modal-background" (click)="CloseTransactionModel()"></div>
                 <div class="modal-card">
                   <header class="modal-card-head">
-                    <p class="modal-card-title">Enter Expense</p>
+                    <p class="modal-card-title">Enter Transaction</p>
                     <button class="delete" aria-label="close" (click)="CloseTransactionModel()"></button>
                   </header>
 
@@ -252,7 +252,7 @@
 
 
               <button class="button is-pulled-right" (click)="OpenTransactionModel()" *ngIf="showingTransactions">Enter
-                Expense</button>
+                Transaction</button>
 
               <button class="button is-pulled-right" (click)="OpenCategoryModal()" *ngIf="showingCategories">Enter
                 Category</button>
