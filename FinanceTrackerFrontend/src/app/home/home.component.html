@@ -65,15 +65,32 @@
                     <th>Category</th>
                     <th>Date</th>
                     <th>Note</th>
+                    <th>Action
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let t of transactionService.list; let i=index">
                     <td>{{i + 1}}</td>
                     <td>{{t.amount}}$</td>
-                    <td>{{t.category?.title}}</td>
+                    <td>{{ t.category?.icon}} {{t.category?.title}}</td>
                     <td>{{convertToFormattedString(t.date)}}</td>
                     <td>{{t.note}}</td>
+                    <td>
+                      <p class="buttons">
+                        <button class="button is-small is-danger" (click)="deleteTransaction(t.id)">
+                          <span class="icon is-small has-text-danger">
+                            <img src="/assets/cross.png">
+                          </span>
+                        </button>
+                        <button class="button is-small is-info" (click)="editTransaction(t.id)">
+                          <span class=" icon is-small">
+                            <img src="/assets/edit.png">
+                          </span>
+                        </button>
+                      </p>
+
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -115,11 +132,11 @@
 
               <!-- Modal Component Transaction -->
               <div class="modal" [ngClass]="{'is-active': transactionModalActive}">
-                <div class="modal-background" (click)="CloseTransactionModel()"></div>
+                <div class="modal-background" (click)="cancelTransactionButton()"></div>
                 <div class="modal-card">
                   <header class="modal-card-head">
                     <p class="modal-card-title">Enter Transaction</p>
-                    <button class="delete" aria-label="close" (click)="CloseTransactionModel()"></button>
+                    <button class="delete" aria-label="close" (click)="cancelTransactionButton()"></button>
                   </header>
 
 
@@ -193,10 +210,10 @@
 
               <!-- Modal Component -->
               <div class="modal" [ngClass]="{'is-active': categoryModalActive}">
-                <div class="modal-background" (click)="CloseCategoryModel()"></div>
+                <div class="modal-background" (click)="cancelCategoryButton()"></div>
                 <div class="modal-card">
                   <header class="modal-card-head">
-                    <p class="modal-card-title">{{ isEditMode ? 'Edit Category' : 'Create Category' }}</p>
+                    <p class="modal-card-title">{{ IsEditModeCategory ? 'Edit Category' : 'Create Category' }}</p>
                     <button class="delete" aria-label="close" (click)="cancelCategoryButton()"></button>
                   </header>
 
@@ -239,7 +256,8 @@
 
                   <footer class="modal-card-foot">
                     <div class="buttons">
-                      <button class="button is-success" (click)="submitCategoryForm()">{{ isEditMode ? 'Update' :
+                      <button class="button is-success" (click)="submitCategoryForm()">{{ IsEditModeCategory ? 'Update'
+                        :
                         'Submit' }}</button>
                       <button class="button" (click)="cancelCategoryButton()">Cancel</button>
                     </div>

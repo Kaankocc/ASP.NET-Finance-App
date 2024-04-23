@@ -48,6 +48,19 @@ export class TransactionService {
    return this.http.post(this.url, this.formData);
   }
 
+  PutTransaction(id: number):  Observable<any> {
+    return this.http.put(this.url + "/" + id, this.formData);
+   }
+
+
+  GetSingleTransaction(id: number) {
+    return this.http.get(this.url + "/" + id)
+  }
+
+  DeleteTransaction(id: number) {
+    return this.http.delete(this.url + "/" + id)
+  }
+
   getTotalAmount(): number {
     let totalAmount = 0;
     for (const transaction of this.list) {

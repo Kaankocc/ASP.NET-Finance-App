@@ -5,6 +5,7 @@ import { TransactionService } from '../shared/transaction.service';
 import { CategoryService } from '../shared/category.service';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Category } from '../shared/category.model';
+import { Transaction } from '../shared/transaction.model';
 
 
 @Component({
@@ -30,7 +31,11 @@ export class HomeComponent implements OnInit {
 
   // For Editing Category Object
   currentCategory: Category | undefined;
-  isEditMode: boolean = false; // Flag to track if in edit mode
+  IsEditModeCategory: boolean = false; // Flag to track if in edit mode
+
+    // For Editing Transaction Object
+  currentTransaction: Transaction | undefined;
+  IsEditModeTransaction: boolean = false; // Flag to track if in edit mode
 
 
   showingTransactions: boolean = true;
@@ -59,7 +64,7 @@ export class HomeComponent implements OnInit {
     this.transactionService.PostTransaction().subscribe({
     next: () => {
       // Close the modal after successful post
-      this.CloseTransactionModel();
+      this.cancelTransactionButton();
       // Reload the page to refresh the list
       location.reload();
     },
@@ -72,7 +77,7 @@ export class HomeComponent implements OnInit {
   }
 
   editCategory(id: number): void {
-    this.isEditMode = true;
+    this.IsEditModeCategory = true;
     this.categoryService.GetSingleCategory(id).subscribe({
       next: res=>{
         this.currentCategory = res as Category;
@@ -91,7 +96,7 @@ export class HomeComponent implements OnInit {
   }
 
   submitCategoryForm(): void {
-    if(this.isEditMode == false) {
+    if(this.IsEditModeCategory == false) {
     this.categoryService.formData.title = this.title;
     this.categoryService.formData.icon = this.icon;
     this.categoryService.formData.type = this.type;
@@ -146,7 +151,43 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deleteTransaction(id: number): void {
+    this.transactionService.DeleteTransaction(id).subscribe({
+      next: () => {
+        // Reload the page to refresh the list
+        this.showingTransactions = true;
+        this.showTransactions();
+      },
+      error: (error) => {
+        // Handle errors if necessary
+        console.error('Error deleting Category:', error);
+      }
+    });
+  }
+
+  editTransaction(id: number): void {
+    this.IsEditModeTransaction = true;
+    this.transactionService.GetSingleTransaction(id).subscribe({
+      next: res=>{
+        this.currentTransaction = res as Transaction;
+        this.amount = this.currentTransaction?.amount ?? 0;
+        this.selectedCategory = (this.currentTransaction?.categoryId ?? 0).toString();
+        this.note = this.currentTransaction?.note ?? '';
+        this.note = this.currentTransaction?.note ?? '';
+        this.date = this.convertToFormattedString(this.currentTransaction?.date ?? '');
+        console.log(res);
+      },
+      error: err => {console.log(err)}
+    });
+
+    
+
+    this.OpenTransactionModel();
+
+  }
+
   showTransactions() {
+    this.transactionService.GetListOfTransactions();
     this.showingTransactions = true;
     this.showingCategories = false;
   }
@@ -170,10 +211,7 @@ export class HomeComponent implements OnInit {
     this.categoryService.GetListOfCategories();
   }
 
-  CloseTransactionModel() {
-    this.transactionModalActive = false;
-    
-  }
+
 
   OpenCategoryModal() {
     this.categoryModalActive = true;
@@ -181,18 +219,19 @@ export class HomeComponent implements OnInit {
 
 
   CloseCategoryModel() {
-    this.isEditMode = false;
+    this.IsEditModeCategory = false;
     this.categoryModalActive = false;
     this.transactionModalActive = false;
 
   }
 
   cancelCategoryButton() {
-    this.isEditMode = false;
+    this.IsEditModeCategory = false;
     this.title  = ""; 
     this.icon = "";
     this.type = '';
     this.categoryModalActive = false;
+    this.transactionModalActive = false;
   }
   
 convertToFormattedString(dateTime: Date | string | undefined): string {
