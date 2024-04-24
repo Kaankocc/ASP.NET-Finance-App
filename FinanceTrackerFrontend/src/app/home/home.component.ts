@@ -6,17 +6,22 @@ import { CategoryService } from '../shared/category.service';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Category } from '../shared/category.model';
 import { Transaction } from '../shared/transaction.model';
+import ApexCharts from 'apexcharts'
+import { PieChartComponent } from "../pie-chart/pie-chart.component";
+
 
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  providers: [TransactionService, CategoryService]
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    providers: [TransactionService, CategoryService],
+    imports: [CommonModule, HttpClientModule, FormsModule, PieChartComponent]
 })
 export class HomeComponent implements OnInit {
+
+
 
   // For Transaction Object
   selectedCategory: string = ""; 
@@ -43,16 +48,22 @@ export class HomeComponent implements OnInit {
 
 
 
+
+
   constructor(public transactionService: TransactionService,
     public categoryService: CategoryService ) {
   }
 
   transactionModalActive: boolean = false;
   categoryModalActive: boolean = false;
+  noteModelActive: boolean =  false;
+  noteContent: string = "";
 
 
   ngOnInit(): void {  
+    
     this.transactionService.GetListOfTransactions();
+
   }
 
   submitTransactionForm(): void {
@@ -211,6 +222,10 @@ export class HomeComponent implements OnInit {
     this.categoryService.GetListOfCategories();
   }
 
+  closeNodeModel() {
+    this.noteModelActive = false;
+  }
+
 
 
   OpenCategoryModal() {
@@ -223,6 +238,11 @@ export class HomeComponent implements OnInit {
     this.categoryModalActive = false;
     this.transactionModalActive = false;
 
+  }
+
+  showNoteModal(note: string) {
+    this.noteModelActive = true;
+    this.noteContent = note; // Set the note content
   }
 
   cancelCategoryButton() {

@@ -75,7 +75,12 @@
                     <td>{{t.amount}}$</td>
                     <td>{{ t.category?.icon}} {{t.category?.title}}</td>
                     <td>{{convertToFormattedString(t.date)}}</td>
-                    <td>{{t.note}}</td>
+                    <td> <button class="button is-small " (click)="showNoteModal(t.note)" *ngIf="t.note !== ''">
+                        <span class="icon is-small">
+                          <p>. . .</p>
+                          <i class="fas fa-ellipsis-v"></i>
+                        </span>
+                      </button></td>
                     <td>
                       <p class="buttons">
                         <button class="button is-small is-danger" (click)="deleteTransaction(t.id)">
@@ -208,6 +213,19 @@
                 </div>
               </div>
 
+              <div class="modal" [ngClass]="{'is-active': noteModelActive}">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  <!-- Any other Bulma elements you want -->
+                  <div class="content is-normal">
+                    <h1>Note</h1>
+                    <p> {{ noteContent }}</p>
+
+                  </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close" (click)="closeNodeModel()"></button>
+              </div>
+
               <!-- Modal Component -->
               <div class="modal" [ngClass]="{'is-active': categoryModalActive}">
                 <div class="modal-background" (click)="cancelCategoryButton()"></div>
@@ -281,6 +299,7 @@
           <div class="column is-half">
             <!-- Right side graph goes here -->
             <div class="column">
+              <app-pie-chart></app-pie-chart>
 
 
             </div>
