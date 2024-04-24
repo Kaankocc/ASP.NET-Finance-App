@@ -70,7 +70,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let t of paginatedData; let i=index">
+                  <tr *ngFor="let t of paginatedTransactionData; let i=index">
                     <td>{{i + (itemsPerPage * (currentPage - 1)) + 1}}</td>
                     <td>{{t.amount}}$</td>
                     <td>{{ t.category?.icon}} {{t.category?.title}}</td>
@@ -99,10 +99,7 @@
                   </tr>
                 </tbody>
               </table>
-              <ng-container *ngIf="transactionService.list.length > 1">
-                <app-pagination [totalItems]="transactionService.list.length" [itemsPerPage]="itemsPerPage"
-                  [currentPage]="currentPage" (onClick)="changePage($event)"></app-pagination>
-              </ng-container>
+
 
               <!-- Categories List -->
               <table class="table is-fullwidth" *ngIf="showingCategories">
@@ -116,8 +113,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let c of categoryService.list; let i=index">
-                    <td>{{i + 1}}</td>
+                  <tr *ngFor="let c of paginatedCategorynData; let i=index">
+                    <td>{{i + (itemsPerPage * (currentPage - 1)) + 1}}</td>
                     <td>{{c.title}}</td>
                     <td>{{c.icon}}</td>
                     <td>{{c.type}}</td>
@@ -139,6 +136,16 @@
                   </tr>
                 </tbody>
               </table>
+
+              <ng-container *ngIf="transactionService.list.length > 1 && showingTransactions">
+                <app-pagination [totalItems]="transactionService.list.length" [itemsPerPage]="itemsPerPage"
+                  [currentPage]="currentPage" (onClick)="changePage($event)"></app-pagination>
+              </ng-container>
+
+              <ng-container *ngIf="categoryService.list.length > 1 && showingCategories">
+                <app-pagination [totalItems]="categoryService.list.length" [itemsPerPage]="itemsPerPage"
+                  [currentPage]="currentPage" (onClick)="changePage($event)"></app-pagination>
+              </ng-container>
 
               <!-- Modal Component Transaction -->
               <div class="modal" [ngClass]="{'is-active': transactionModalActive}">

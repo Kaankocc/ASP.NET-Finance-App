@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
 
   TransactionData = this.transactionService.list;
+  CategoryData = this.categoryService.list;
 
 
   // For Transaction Object
@@ -70,12 +71,20 @@ export class HomeComponent implements OnInit {
 
   }
 
-  get paginatedData() {
+  get paginatedTransactionData() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
 
     return this.transactionService.list.slice(start, end);
   }
+
+  get paginatedCategorynData() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+
+    return this.categoryService.list.slice(start, end);
+  }
+
 
   changePage(page: number) {
     this.currentPage = page;
@@ -92,7 +101,8 @@ export class HomeComponent implements OnInit {
       // Close the modal after successful post
       this.cancelTransactionButton();
       // Reload the page to refresh the list
-      location.reload();
+      this.showingTransactions = true;
+        this.showTransactions();
     },
     error: (error) => {
       // Handle errors if necessary
@@ -150,7 +160,7 @@ export class HomeComponent implements OnInit {
   
         this.categoryService.PutCategory(this.currentCategory.id).subscribe({
           next: () => { 
-            this.CloseCategoryModel();
+            this.cancelCategoryButton();
             this.showCategories();
           },
           error: (error) => {
