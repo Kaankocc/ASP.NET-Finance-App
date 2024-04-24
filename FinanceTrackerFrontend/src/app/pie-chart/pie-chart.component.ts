@@ -5,7 +5,8 @@ import {
   ApexChart,
   ApexXAxis,
   ApexTitleSubtitle,
-  NgApexchartsModule
+  NgApexchartsModule,
+  ApexTheme
 } from "ng-apexcharts";
 
 @Component({
@@ -25,6 +26,8 @@ export class PieChartComponent {
       show: true
     }
   };
+
+  
   chartLabels = ["Random","Apple", "Microsoft", "Nvidia", "Intel"]
 
   constructor() {

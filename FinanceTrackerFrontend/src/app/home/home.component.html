@@ -70,8 +70,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let t of transactionService.list; let i=index">
-                    <td>{{i + 1}}</td>
+                  <tr *ngFor="let t of paginatedData; let i=index">
+                    <td>{{i + (itemsPerPage * (currentPage - 1)) + 1}}</td>
                     <td>{{t.amount}}$</td>
                     <td>{{ t.category?.icon}} {{t.category?.title}}</td>
                     <td>{{convertToFormattedString(t.date)}}</td>
@@ -99,6 +99,11 @@
                   </tr>
                 </tbody>
               </table>
+              <ng-container *ngIf="transactionService.list.length > 1">
+                <app-pagination [totalItems]="transactionService.list.length" [itemsPerPage]="itemsPerPage"
+                  [currentPage]="currentPage" (onClick)="changePage($event)"></app-pagination>
+              </ng-container>
+
               <!-- Categories List -->
               <table class="table is-fullwidth" *ngIf="showingCategories">
                 <thead>

@@ -1,0 +1,9 @@
+<nav class="pagination" role="navigation" aria-label="pagination">
+    <ul class="pagination-list">
+        <li *ngFor="let page of pages">
+            <a class="pagination-link" [class.is-current]="currentPage === page" aria-label="Page 1" aria-current="page"
+                (click)="pageClicked(page)">{{page}}</a>
+        </li>
+
+    </ul>
+</nav>

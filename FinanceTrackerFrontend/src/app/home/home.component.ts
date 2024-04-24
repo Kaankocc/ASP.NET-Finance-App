@@ -8,6 +8,7 @@ import { Category } from '../shared/category.model';
 import { Transaction } from '../shared/transaction.model';
 import ApexCharts from 'apexcharts'
 import { PieChartComponent } from "../pie-chart/pie-chart.component";
+import { PaginationComponent } from "../pagination/pagination.component";
 
 
 
@@ -17,10 +18,13 @@ import { PieChartComponent } from "../pie-chart/pie-chart.component";
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     providers: [TransactionService, CategoryService],
-    imports: [CommonModule, HttpClientModule, FormsModule, PieChartComponent]
+    imports: [CommonModule, HttpClientModule, FormsModule, PieChartComponent, PaginationComponent]
 })
 export class HomeComponent implements OnInit {
+  itemsPerPage = 5;
+  currentPage = 1;
 
+  TransactionData = this.transactionService.list;
 
 
   // For Transaction Object
@@ -64,6 +68,17 @@ export class HomeComponent implements OnInit {
     
     this.transactionService.GetListOfTransactions();
 
+  }
+
+  get paginatedData() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+
+    return this.transactionService.list.slice(start, end);
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
   }
 
   submitTransactionForm(): void {
