@@ -26,7 +26,6 @@ export class PaginationComponent {
 
   ngOnInit(): void {
     if(this.totalItems) {
-      console.log(this.totalItems)
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     }

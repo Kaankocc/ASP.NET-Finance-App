@@ -12,6 +12,7 @@ import { PaginationComponent } from "../pagination/pagination.component";
 
 
 
+
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -26,6 +27,9 @@ export class HomeComponent implements OnInit {
 
   TransactionData = this.transactionService.list;
   CategoryData = this.categoryService.list;
+
+  topExpenseCategories: { category: Category, totalExpense: number }[] = [];
+  totalExpense: number = 0;
 
 
   // For Transaction Object
@@ -68,8 +72,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {  
     
     this.transactionService.GetListOfTransactions();
+    this.categoryService.GetListOfCategories();
 
   }
+
+  
 
   get paginatedTransactionData() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
@@ -232,6 +239,8 @@ export class HomeComponent implements OnInit {
     this.categoryService.GetListOfCategories();
     this.showingTransactions = false;
     this.showingCategories = true;
+
+  
   }
 
   cancelTransactionButton() {
@@ -312,6 +321,7 @@ parseDateString(date: string): Date | undefined {
         
         return undefined;
 }
+
 
 
 }

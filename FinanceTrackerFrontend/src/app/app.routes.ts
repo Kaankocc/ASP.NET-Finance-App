@@ -4,6 +4,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'pie', component: PieChartComponent },
+    { path: 'pie', component: PieChartComponent }
+
 
 ];

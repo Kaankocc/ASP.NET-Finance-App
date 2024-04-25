@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment.development';
 import { Transaction } from './transaction.model';
 import { transition } from '@angular/animations';
 import { Observable } from 'rxjs';
+import { Category } from './category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -69,4 +70,9 @@ export class TransactionService {
     return totalAmount;
   }
 
+  
+
+ 
 }
+
+
