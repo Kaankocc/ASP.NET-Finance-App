@@ -90,6 +90,13 @@ namespace FinanceTrackerApi.Controllers
 
             return Ok(deletedTransaction);
         }
+
+        [HttpGet("top-categories")]
+        public async Task<ActionResult<List<CategoryTransactionSummary>>> GetTop5CategoriesByTransactionAmount()
+        {
+            var topCategories = await _transactionService.GetTop5CategoriesByTransactionAmount();
+            return Ok(topCategories);
+        }
     }
 }
 

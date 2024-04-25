@@ -73,7 +73,9 @@ export class HomeComponent implements OnInit {
     
     this.transactionService.GetListOfTransactions();
     this.categoryService.GetListOfCategories();
+    this.transactionService.GetTop5CategoriesByTransactionAmount();
 
+  
   }
 
   
@@ -149,7 +151,7 @@ export class HomeComponent implements OnInit {
     this.categoryService.PostCategory().subscribe({
       next: () => {
         // Close the modal after successful post
-        this.CloseCategoryModel();
+        this.cancelCategoryButton();
         // Reload the page to refresh the list
         this.showCategories();
       },

@@ -1,21 +1,22 @@
 ﻿<Properties StartupConfiguration="{A81660F2-B565-44B1-8645-07988212CA9D}|https">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Persistence/FinanceAppDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TrancationController.cs">
     <Files>
-      <File FileName="Persistence/FinanceAppDbContext.cs" Line="21" Column="1" />
-      <File FileName="appsettings.json" />
+      <File FileName="Models/Category.cs" Line="11" Column="1" />
+      <File FileName="Models/Transaction.cs" Line="18" Column="2" />
+      <File FileName="Controllers/TrancationController.cs" Line="10" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FinanceTrackerApi">
             <Node name="FinanceTrackerApi">
-              <Node name="Persistence" expanded="True">
-                <Node name="FinanceAppDbContext.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="TrancationController.cs" selected="True" />
               </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Persistence" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -25,4 +26,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

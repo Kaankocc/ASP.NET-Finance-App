@@ -76,5 +76,28 @@ namespace FinanceTrackerApi.Services.TransactionService
 
             return transaction;
         }
+
+        public async Task<List<CategoryTransactionSummary>> GetTop5CategoriesByTransactionAmount()
+        {
+            var topCategories = await _context.Transactions
+                .Where(t => t.Category.Type == "Expense") // Filter by expense category
+                .GroupBy(t => t.Category.Title)
+                .Select(group => new CategoryTransactionSummary
+                {
+                    CategoryTitle = group.Key,
+                    TotalTransactionAmount = group.Sum(t => t.Amount),
+                    Icon = group.FirstOrDefault().Category != null ? group.FirstOrDefault().Category.Icon : "" // Check if Category is not null before accessing Icon
+                })
+                .OrderByDescending(summary => summary.TotalTransactionAmount)
+                .Take(5)
+                .ToListAsync();
+
+            return topCategories;
+        }
+
+
+
+
+
     }
 }

@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment.development';
 import { Transaction } from './transaction.model';
 import { transition } from '@angular/animations';
 import { Observable } from 'rxjs';
-import { Category } from './category.model';
+import { Category, CategoryTransactionSummary } from './category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ export class TransactionService {
   totalExpense: number = 0;
   totalIncome: number = 0;
   formData : Transaction = new Transaction();
+  topCategories: CategoryTransactionSummary[] = [];
   constructor(private http: HttpClient) { }
   
 
@@ -70,6 +71,17 @@ export class TransactionService {
     return totalAmount;
   }
 
+  GetTop5CategoriesByTransactionAmount() {
+    this.http.get(this.url + "/top-categories")
+    .subscribe({
+      next: res=>{
+        this.topCategories = res as CategoryTransactionSummary[];
+        console.log(res);
+      },
+      error: err => {console.log(err)}
+    });
+  } 
+  
   
 
  

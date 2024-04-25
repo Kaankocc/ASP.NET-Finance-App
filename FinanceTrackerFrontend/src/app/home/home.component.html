@@ -170,7 +170,7 @@
                         <div class="select is-rounded">
                           <select [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}">
                             <option value="">Select Category</option>
-                            <option *ngFor="let c of categoryService.list" [value]="c.id">{{c.title}}</option>
+                            <option *ngFor="let c of categoryService.list" [value]="c.id">{{c.icon}}{{c.title}}</option>
                           </select>
                         </div>
                       </div>
@@ -266,7 +266,7 @@
                     <div class="field">
                       <label class="label">Icon (Emoji)</label>
                       <div class="control">
-                        <input class="input mb-3" type="text" placeholder="Input Emoji here.." [(ngModel)]="icon"
+                        <input class="input mb-3" type="emoji" placeholder="Input Emoji here.." [(ngModel)]="icon"
                           [ngModelOptions]="{standalone: true}" />
                       </div>
                     </div>

@@ -4,3 +4,10 @@ export class Category {
     icon: string = "";
     type: string = "";
 }
+
+
+export class CategoryTransactionSummary {
+    CategoryTitle: string = "";
+    TotalTransactionAmount: number = 0;
+    Icon: string = "";
+}
