@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H3hZDt8R8bUnLoJDZfqQK0XIdZ0xSeTxD5bes3WRwkhw7rJ06H51FdxY2Kb4c5COqRAsspeqtKwe+5NOY55tZw==",
+  "dgSpecHash": "8wCyXonRUJUgfhsAYqxm7aeJU8o1kpk+1Rkm8D8lLQSgN5VIbDdeAbOJKaKIhhrhTbSmPM0uYFkKRa4I7sfKvQ==",
   "success": true,
-  "projectFilePath": "/Users/kaankoc/Desktop/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
+  "projectFilePath": "/Users/kaankoc/Projects/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
   "expectedPackageFiles": [
     "/Users/kaankoc/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/kaankoc/.nuget/packages/microsoft.aspnetcore.openapi/7.0.17/microsoft.aspnetcore.openapi.7.0.17.nupkg.sha512",

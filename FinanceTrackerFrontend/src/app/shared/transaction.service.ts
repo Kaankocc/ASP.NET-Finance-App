@@ -71,15 +71,8 @@ export class TransactionService {
     return totalAmount;
   }
 
-  GetTop5CategoriesByTransactionAmount() {
-    this.http.get(this.url + "/top-categories")
-    .subscribe({
-      next: res=>{
-        this.topCategories = res as CategoryTransactionSummary[];
-        console.log(res);
-      },
-      error: err => {console.log(err)}
-    });
+  GetTop5CategoriesByTransactionAmount(): Observable<any> {
+    return this.http.get(this.url + "/top-categories");
   } 
   
   

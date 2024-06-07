@@ -4,11 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { TransactionService } from '../shared/transaction.service';
 import { CategoryService } from '../shared/category.service';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { Category } from '../shared/category.model';
+import { Category, CategoryTransactionSummary } from '../shared/category.model';
 import { Transaction } from '../shared/transaction.model';
-import ApexCharts from 'apexcharts'
-import { PieChartComponent } from "../pie-chart/pie-chart.component";
 import { PaginationComponent } from "../pagination/pagination.component";
+import { GoogleChartComponent, GoogleChartInterface, GoogleChartType, Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 
 
 
@@ -19,7 +19,7 @@ import { PaginationComponent } from "../pagination/pagination.component";
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     providers: [TransactionService, CategoryService],
-    imports: [CommonModule, HttpClientModule, FormsModule, PieChartComponent, PaginationComponent]
+    imports: [CommonModule, HttpClientModule, FormsModule, PaginationComponent, Ng2GoogleChartsModule]
 })
 export class HomeComponent implements OnInit {
   itemsPerPage = 5;
@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   topExpenseCategories: { category: Category, totalExpense: number }[] = [];
   totalExpense: number = 0;
 
+  // For Graph
+  topCategories: CategoryTransactionSummary[] = [];
 
   // For Transaction Object
   selectedCategory: string = ""; 
@@ -56,6 +58,34 @@ export class HomeComponent implements OnInit {
   showingCategories: boolean = false;
 
 
+  pieChart: GoogleChartInterface = {
+    chartType: GoogleChartType.PieChart,
+    dataTable: [
+      ["Category Title", "Amount"],
+      ["A", 75],
+      ["B", 100],
+
+    ], 
+    options: { 
+    title: 'Top Categories',
+    titleTextStyle: {
+      color: '#F1EFEE', // Color of the chart title text
+      fontSize: 20 // Font size of the chart title text
+    },
+    width: 600,
+    height: 500,
+    chartArea: { width: '80%', height: '80%' },
+    legend: { 
+      position: 'bottom',
+      textStyle: {
+        color: '#F1EFEE' // Color of the legend text
+      }
+    },
+    backgroundColor: "transparent" // Use backgroundColor instead of bgcolor
+    },
+    
+  };
+  TopCategoriesArrived: boolean = false;
 
 
 
@@ -71,12 +101,34 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {  
     
+    
     this.transactionService.GetListOfTransactions();
     this.categoryService.GetListOfCategories();
-    this.transactionService.GetTop5CategoriesByTransactionAmount();
+
+
+    this.transactionService.GetTop5CategoriesByTransactionAmount().subscribe({
+      next: (res) => {
+        this.topCategories = res as CategoryTransactionSummary[];
+        console.log(res);
+        this.TopCategoriesArrived = true;
+        this.pieChart.dataTable =  [
+          ["Category Title", "Amount"],
+          [this.topCategories[0].CategoryTitle, 100],
+          ["B", 100],
+        ];
+        
+      }, 
+      error: err => {
+        console.log(err);
+      }
+    }); 
+
+    
 
   
   }
+
+  
 
   
 
@@ -323,8 +375,6 @@ parseDateString(date: string): Date | undefined {
         
         return undefined;
 }
-
-
 
 }
 

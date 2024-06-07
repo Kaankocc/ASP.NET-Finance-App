@@ -1453,11 +1453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kaankoc/Desktop/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
+      "projectUniqueName": "/Users/kaankoc/Projects/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
       "projectName": "FinanceTrackerApi",
-      "projectPath": "/Users/kaankoc/Desktop/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
+      "projectPath": "/Users/kaankoc/Projects/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/FinanceTrackerApi.csproj",
       "packagesPath": "/Users/kaankoc/.nuget/packages/",
-      "outputPath": "/Users/kaankoc/Desktop/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/obj/",
+      "outputPath": "/Users/kaankoc/Projects/Dotnet-Finance-Webapp/FinanceTrackerApi/FinanceTrackerApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kaankoc/.nuget/NuGet/NuGet.Config"
@@ -1466,6 +1466,7 @@
         "net7.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/sdk/7.0.315/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1478,11 +1479,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1531,7 +1527,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.315/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,31 +1,32 @@
 ﻿<Properties StartupConfiguration="{A81660F2-B565-44B1-8645-07988212CA9D}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TrancationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Transaction.cs">
     <Files>
-      <File FileName="Models/Category.cs" Line="11" Column="1" />
-      <File FileName="Models/Transaction.cs" Line="18" Column="2" />
-      <File FileName="Controllers/TrancationController.cs" Line="10" Column="2" />
+      <File FileName="Models/Transaction.cs" Line="10" Column="19" />
+      <File FileName="Controllers/TrancationController.cs" />
+      <File FileName="Controllers/CategoryController.cs" />
+      <File FileName="Services/TransactionService/TransactionService.cs" />
+      <File FileName="Services/TransactionService/ITransactionService.cs" />
+      <File FileName="Models/CategoryTransactionSummary.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FinanceTrackerApi">
             <Node name="FinanceTrackerApi">
-              <Node name="Controllers" expanded="True">
-                <Node name="TrancationController.cs" selected="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Transaction.cs" selected="True" />
               </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Persistence" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>
