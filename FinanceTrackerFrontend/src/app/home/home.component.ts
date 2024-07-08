@@ -13,6 +13,7 @@ import { GoogleChartComponent, GoogleChartInterface, GoogleChartType, Ng2GoogleC
 
 
 
+
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -62,28 +63,26 @@ export class HomeComponent implements OnInit {
     chartType: GoogleChartType.PieChart,
     dataTable: [
       ["Category Title", "Amount"],
-      ["A", 75],
-      ["B", 100],
 
-    ], 
-    options: { 
-    title: 'Top Categories',
-    titleTextStyle: {
-      color: '#F1EFEE', // Color of the chart title text
-      fontSize: 20 // Font size of the chart title text
-    },
-    width: 600,
-    height: 500,
-    chartArea: { width: '80%', height: '80%' },
-    legend: { 
-      position: 'bottom',
-      textStyle: {
-        color: '#F1EFEE' // Color of the legend text
-      }
-    },
-    backgroundColor: "transparent" // Use backgroundColor instead of bgcolor
-    },
-    
+    ],
+    options: {
+      title: 'Top Categories',
+      titleTextStyle: {
+        color: '#F1EFEE',
+        fontSize: 20
+      },
+      width: 600,
+      height: 500,
+      chartArea: { width: '80%', height: '80%' },
+      legend: {
+        position: 'bottom',
+        textStyle: {
+          color: '#F1EFEE'
+        }
+      },
+      backgroundColor: "transparent",
+      colors: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c']
+    }
   };
   TopCategoriesArrived: boolean = false;
 
@@ -106,27 +105,42 @@ export class HomeComponent implements OnInit {
     this.categoryService.GetListOfCategories();
 
 
+    
     this.transactionService.GetTop5CategoriesByTransactionAmount().subscribe({
       next: (res) => {
         this.topCategories = res as CategoryTransactionSummary[];
         console.log(res);
-        this.TopCategoriesArrived = true;
-        this.pieChart.dataTable =  [
-          ["Category Title", "Amount"],
-          [this.topCategories[0].CategoryTitle, 100],
-          ["B", 100],
-        ];
-        
-      }, 
+      
+        this.prepareChartData();
+
+      },
       error: err => {
         console.log(err);
+  
       }
-    }); 
-
-    
+    });
 
   
+  } 
+
+  prepareChartData(): void {
+    this.TopCategoriesArrived = true;
+
+    // Prepare dynamic data for pieChart.dataTable
+    
+
+    this.topCategories.forEach(category => {
+      if (category.totalTransactionAmount != undefined) {
+        this.pieChart.dataTable.push([category.categoryTitle, category.totalTransactionAmount]);
+      } else {
+        console.log("Undefined!")
+      }
+    });
+
+  
+    console.log('PieChart dataTable:', this.pieChart.dataTable);    
   }
+
 
   
 

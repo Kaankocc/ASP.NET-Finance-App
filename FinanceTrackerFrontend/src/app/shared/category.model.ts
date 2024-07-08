@@ -7,7 +7,7 @@ export class Category {
 
 
 export class CategoryTransactionSummary {
-    CategoryTitle: string = "";
-    TotalTransactionAmount: number = 0;
-    Icon: string = "";
+    categoryTitle: string = "";
+    totalTransactionAmount: number = 0;
+    icon: string = "";
 }
