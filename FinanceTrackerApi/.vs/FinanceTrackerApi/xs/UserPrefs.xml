@@ -1,8 +1,4 @@
 ﻿<Properties StartupConfiguration="{89E4C144-CF0A-41DA-9126-CD77805B3365}|https">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.FinanceTrackerApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -19,10 +15,12 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FinanceTrackerApi" expanded="True">
+          <Node name="FinanceTrackerApi">
             <Node name="FinanceTrackerApi" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Category.cs" selected="True" />
+              </Node>
               <Node name="Persistence" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="CategoryService" expanded="True" />
@@ -34,4 +32,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
 </Properties>

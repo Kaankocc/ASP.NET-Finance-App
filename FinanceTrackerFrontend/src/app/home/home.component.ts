@@ -58,6 +58,9 @@ export class HomeComponent implements OnInit {
   showingTransactions: boolean = true;
   showingCategories: boolean = false;
 
+  currentSelectedMonth: number;
+  currentSelectedYear: number;
+
 
   pieChart: GoogleChartInterface = {
     chartType: GoogleChartType.PieChart,
@@ -71,17 +74,21 @@ export class HomeComponent implements OnInit {
         color: '#F1EFEE',
         fontSize: 20
       },
-      width: 600,
+      width: 700,
       height: 500,
-      chartArea: { width: '80%', height: '80%' },
+      chartArea: { width: '80%', height: '80%', left: 100, top: 75},
       legend: {
-        position: 'bottom',
+        position: 'right',
+
         textStyle: {
           color: '#F1EFEE'
         }
       },
       backgroundColor: "transparent",
-      colors: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c']
+      colors: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c'],
+      pieSliceText: 'value',
+      pieSliceBorderColor: '#333333', // Darker border color
+    pieSliceBorderStyle: 'solid' // Solid border style
     }
   };
   TopCategoriesArrived: boolean = false;
@@ -90,6 +97,13 @@ export class HomeComponent implements OnInit {
 
   constructor(public transactionService: TransactionService,
     public categoryService: CategoryService ) {
+      const currentDate = new Date();
+      this.currentSelectedMonth = currentDate.getMonth() + 1; // getMonth() returns 0 for January, so add 1
+      this.currentSelectedYear = currentDate.getFullYear();
+
+      console.log(this.currentSelectedMonth)
+      console.log(this.currentSelectedYear)
+
   }
 
   transactionModalActive: boolean = false;
@@ -131,7 +145,7 @@ export class HomeComponent implements OnInit {
 
     this.topCategories.forEach(category => {
       if (category.totalTransactionAmount != undefined) {
-        this.pieChart.dataTable.push([category.categoryTitle, category.totalTransactionAmount]);
+        this.pieChart.dataTable.push([category.categoryTitle + " " + category.icon, category.totalTransactionAmount]);
       } else {
         console.log("Undefined!")
       }

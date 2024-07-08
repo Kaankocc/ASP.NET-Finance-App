@@ -28,8 +28,8 @@
   </section>
 
 
-
   <section class="section">
+    
     <div class="container">
       <div class="box">
         <div class="columns">
@@ -313,6 +313,7 @@
           <div class="column is-half">
             <!-- Right side graph goes here -->
             <div class="column" *ngIf="TopCategoriesArrived">
+            
               <google-chart [data]="pieChart" *ngIf="pieChart.dataTable && pieChart.dataTable.length > 1">
               </google-chart>
           
