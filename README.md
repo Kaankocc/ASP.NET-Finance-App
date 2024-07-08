@@ -1,5 +1,7 @@
 # Finance Tracking Website 💸
 
+<img src="img.png" alt="Alt text" width="800">
+
 ## Overview
 
 This project is a finance tracking website developed using Angular and ASP.NET Core. It serves as a comprehensive tool for managing personal or business finances efficiently.
